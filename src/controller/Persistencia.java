@@ -6,20 +6,17 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- * Classe responsável pela persistência de dados em arquivos texto
- */
+
 public class Persistencia {
     private static final String CAMINHO_USUARIOS = "dados/usuarios.txt";
     private static final String CAMINHO_EQUIPAMENTOS = "dados/equipamentos.txt";
-    
-    // Métodos para Usuario
+
     public static ArrayList<Usuario> importarUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         File arquivo = new File(CAMINHO_USUARIOS);
         
         if (!arquivo.exists()) {
-            // Se o arquivo não existe, cria um usuário padrão
+
             usuarios.add(new Usuario("Administrador", "admin", "admin"));
             exportarUsuarios(usuarios);
             return usuarios;
@@ -59,11 +56,10 @@ public class Persistencia {
     
     public static boolean adicionarUsuario(Usuario novoUsuario) {
         ArrayList<Usuario> usuarios = importarUsuarios();
-        
-        // Verifica se o login já existe
+  
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(novoUsuario.getLogin())) {
-                return false; // Login já existe
+                return false; 
             }
         }
         
@@ -72,13 +68,13 @@ public class Persistencia {
         return true;
     }
     
-    // Métodos para Equipamento
+
     public static ArrayList<Equipamento> importarEquipamentos() {
         ArrayList<Equipamento> equipamentos = new ArrayList<>();
         File arquivo = new File(CAMINHO_EQUIPAMENTOS);
         
         if (!arquivo.exists()) {
-            // Se o arquivo não existe, cria alguns equipamentos padrão
+
             equipamentos.add(new Equipamento("Notebook Dell", "Notebook", "disponivel"));
             equipamentos.add(new Equipamento("Projetor Epson", "Projetor", "disponivel"));
             equipamentos.add(new Equipamento("Tablet Samsung", "Tablet", "emprestado"));
@@ -123,10 +119,10 @@ public class Persistencia {
     public static boolean adicionarEquipamento(Equipamento novoEquipamento) {
         ArrayList<Equipamento> equipamentos = importarEquipamentos();
         
-        // Verifica se o equipamento já existe
+
         for (Equipamento equipamento : equipamentos) {
             if (equipamento.equals(novoEquipamento)) {
-                return false; // Equipamento já existe
+                return false; 
             }
         }
         

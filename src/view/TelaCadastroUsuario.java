@@ -138,8 +138,7 @@ public class TelaCadastroUsuario extends JDialog {
         setLocationRelativeTo(getParent());
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        // Foco inicial no campo nome
+
         SwingUtilities.invokeLater(() -> txtNome.requestFocus());
     }
     
@@ -148,8 +147,7 @@ public class TelaCadastroUsuario extends JDialog {
         String login = txtLogin.getText().trim();
         String senha = new String(txtSenha.getPassword());
         String confirmarSenha = new String(txtConfirmarSenha.getPassword());
-        
-        // Validações
+
         if (nome.isEmpty() || login.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos os campos devem ser preenchidos!");
             return;
@@ -171,11 +169,11 @@ public class TelaCadastroUsuario extends JDialog {
             return;
         }
         
-        // Tentar cadastrar
+
         if (controller.cadastrarUsuario(nome, login, senha)) {
             JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
             dispose();
         }
-        // Mensagem de erro já é exibida pelo controller
+
     }
 }

@@ -1,12 +1,10 @@
 package model;
 
-/**
- * Classe que representa um equipamento do sistema
- */
+
 public class Equipamento {
     private String nome;
     private String tipo;
-    private String status; // "disponível" ou "emprestado"
+    private String status; 
     
     public Equipamento() {
     }
@@ -16,8 +14,7 @@ public class Equipamento {
         this.tipo = tipo;
         this.status = status;
     }
-    
-    // Getters e Setters
+   
     public String getNome() {
         return nome;
     }
