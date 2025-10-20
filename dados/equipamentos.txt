@@ -1,0 +1,8 @@
+Notebook Dell Inspiron,Notebook,emprestado
+Projetor Epson PowerLite,Projetor,disponivel
+Tablet Samsung Galaxy,Tablet,disponivel
+Notebook HP EliteBook,Notebook,disponivel
+Camera Canon EOS,Camera,disponivel
+Projetor BenQ MX,Projetor,emprestado
+Tablet Apple iPad,Tablet,disponivel
+Notebook Lenovo ThinkPad,Notebook,disponivel
