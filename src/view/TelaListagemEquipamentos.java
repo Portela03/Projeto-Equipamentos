@@ -9,9 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-/**
- * Tela principal para listagem e gerenciamento de equipamentos
- */
+
 public class TelaListagemEquipamentos extends JFrame {
     private SistemaController controller;
     private JTable tabelaEquipamentos;
@@ -33,28 +31,27 @@ public class TelaListagemEquipamentos extends JFrame {
     }
     
     private void inicializarComponentes() {
-        // Modelo da tabela
+
         String[] colunas = {"Nome do Equipamento", "Tipo", "Status"};
         modeloTabela = new DefaultTableModel(colunas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Torna a tabela não editável
+                return false; 
             }
         };
         
-        // Tabela
+
         tabelaEquipamentos = new JTable(modeloTabela);
         tabelaEquipamentos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tabelaEquipamentos.getTableHeader().setReorderingAllowed(false);
         
-        // Botões
+
         btnEmprestar = new JButton("Emprestar");
         btnDevolver = new JButton("Devolver");
         btnAdicionarEquipamento = new JButton("Adicionar Equipamento");
         btnAtualizar = new JButton("Atualizar Lista");
         btnLogout = new JButton("Logout");
         
-        // Label do usuário logado
         lblUsuarioLogado = new JLabel();
         if (controller.getUsuarioLogado() != null) {
             lblUsuarioLogado.setText("Usuário: " + controller.getUsuarioLogado().getNome());
@@ -64,7 +61,7 @@ public class TelaListagemEquipamentos extends JFrame {
     private void configurarLayout() {
         setLayout(new BorderLayout());
         
-        // Painel superior com informações do usuário
+
         JPanel painelSuperior = new JPanel(new BorderLayout());
         painelSuperior.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
         
@@ -78,8 +75,7 @@ public class TelaListagemEquipamentos extends JFrame {
         
         painelSuperior.add(lblTitulo, BorderLayout.CENTER);
         painelSuperior.add(painelUsuario, BorderLayout.EAST);
-        
-        // Painel central com a tabela
+
         JPanel painelCentral = new JPanel(new BorderLayout());
         painelCentral.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         
@@ -88,7 +84,7 @@ public class TelaListagemEquipamentos extends JFrame {
         
         painelCentral.add(scrollPane, BorderLayout.CENTER);
         
-        // Painel inferior com botões
+
         JPanel painelInferior = new JPanel(new FlowLayout());
         painelInferior.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
         
@@ -97,7 +93,7 @@ public class TelaListagemEquipamentos extends JFrame {
         painelInferior.add(btnAdicionarEquipamento);
         painelInferior.add(btnAtualizar);
         
-        // Adicionando os painéis ao frame
+
         add(painelSuperior, BorderLayout.NORTH);
         add(painelCentral, BorderLayout.CENTER);
         add(painelInferior, BorderLayout.SOUTH);
@@ -148,8 +144,7 @@ public class TelaListagemEquipamentos extends JFrame {
                 }
             }
         });
-        
-        // Listener para habilitar/desabilitar botões baseado na seleção
+
         tabelaEquipamentos.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 atualizarEstadoBotoes();
@@ -164,15 +159,14 @@ public class TelaListagemEquipamentos extends JFrame {
         setLocationRelativeTo(null);
         setMinimumSize(new Dimension(600, 400));
         
-        // Inicialmente desabilitar os botões
         atualizarEstadoBotoes();
     }
     
     private void carregarEquipamentos() {
-        // Limpar tabela
+
         modeloTabela.setRowCount(0);
         
-        // Carregar equipamentos
+
         ArrayList<Equipamento> equipamentos = controller.obterEquipamentos();
         
         for (Equipamento equipamento : equipamentos) {
@@ -270,7 +264,7 @@ public class TelaListagemEquipamentos extends JFrame {
     private void abrirTelaCadastroEquipamento() {
         TelaCadastroEquipamento telaCadastro = new TelaCadastroEquipamento(this, controller);
         telaCadastro.setVisible(true);
-        // Atualizar a lista após fechar a tela de cadastro
+
         carregarEquipamentos();
     }
 }

@@ -7,9 +7,7 @@ import view.TelaListagemEquipamentos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- * Controller principal do sistema
- */
+
 public class SistemaController {
     private TelaLogin telaLogin;
     private TelaListagemEquipamentos telaListagem;

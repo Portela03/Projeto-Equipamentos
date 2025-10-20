@@ -6,9 +6,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Tela para cadastro de novos usuários
- */
 public class TelaCadastroUsuario extends JDialog {
     private SistemaController controller;
     private JTextField txtNome;

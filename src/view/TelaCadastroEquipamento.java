@@ -30,15 +30,15 @@ public class TelaCadastroEquipamento extends JDialog {
     private void inicializarComponentes() {
         txtNome = new JTextField(25);
         
-        // ComboBox para tipos de equipamento
+
         String[] tipos = {"Notebook", "Projetor", "Tablet", "Camera", "Monitor", "Impressora", "Outros"};
         cmbTipo = new JComboBox<>(tipos);
-        cmbTipo.setEditable(true); // Permite inserir novos tipos
+        cmbTipo.setEditable(true); 
         
-        // ComboBox para status
+
         String[] status = {"disponivel", "emprestado"};
         cmbStatus = new JComboBox<>(status);
-        cmbStatus.setSelectedIndex(0); // Padrão: disponível
+        cmbStatus.setSelectedIndex(0); 
         
         btnCadastrar = new JButton("Cadastrar");
         btnCancelar = new JButton("Cancelar");
@@ -53,7 +53,7 @@ public class TelaCadastroEquipamento extends JDialog {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         
-        // Título
+
         JLabel lblTitulo = new JLabel("Cadastro de Novo Equipamento");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,7 +63,7 @@ public class TelaCadastroEquipamento extends JDialog {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         painelPrincipal.add(lblTitulo, gbc);
         
-        // Nome do equipamento
+
         gbc.gridwidth = 1;
         gbc.gridy = 1;
         gbc.gridx = 0;
@@ -76,7 +76,7 @@ public class TelaCadastroEquipamento extends JDialog {
         gbc.anchor = GridBagConstraints.WEST;
         painelPrincipal.add(txtNome, gbc);
         
-        // Tipo
+    
         gbc.gridy = 2;
         gbc.gridx = 0;
         gbc.fill = GridBagConstraints.NONE;
@@ -88,7 +88,7 @@ public class TelaCadastroEquipamento extends JDialog {
         gbc.anchor = GridBagConstraints.WEST;
         painelPrincipal.add(cmbTipo, gbc);
         
-        // Status
+   
         gbc.gridy = 3;
         gbc.gridx = 0;
         gbc.fill = GridBagConstraints.NONE;
@@ -100,7 +100,7 @@ public class TelaCadastroEquipamento extends JDialog {
         gbc.anchor = GridBagConstraints.WEST;
         painelPrincipal.add(cmbStatus, gbc);
         
-        // Painel de botões
+
         JPanel painelBotoes = new JPanel(new FlowLayout());
         painelBotoes.add(btnCadastrar);
         painelBotoes.add(btnCancelar);
@@ -131,7 +131,6 @@ public class TelaCadastroEquipamento extends JDialog {
             }
         });
         
-        // Enter no campo nome faz cadastro
         txtNome.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -146,7 +145,7 @@ public class TelaCadastroEquipamento extends JDialog {
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        // Foco inicial no campo nome
+
         SwingUtilities.invokeLater(() -> txtNome.requestFocus());
     }
     
@@ -155,7 +154,7 @@ public class TelaCadastroEquipamento extends JDialog {
         String tipo = (String) cmbTipo.getSelectedItem();
         String status = (String) cmbStatus.getSelectedItem();
         
-        // Validações
+
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(this, "O nome do equipamento deve ser preenchido!");
             txtNome.requestFocus();
@@ -167,11 +166,9 @@ public class TelaCadastroEquipamento extends JDialog {
             cmbTipo.requestFocus();
             return;
         }
-        
-        // Criar novo equipamento
+
         Equipamento novoEquipamento = new Equipamento(nome, tipo.trim(), status);
         
-        // Tentar cadastrar
         if (controller.adicionarEquipamento(novoEquipamento)) {
             JOptionPane.showMessageDialog(this, "Equipamento cadastrado com sucesso!");
             dispose();
