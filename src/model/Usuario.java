@@ -1,8 +1,6 @@
 package model;
 
-/**
- * Classe que representa um usuário do sistema
- */
+
 public class Usuario {
     private String nome;
     private String login;
@@ -17,7 +15,6 @@ public class Usuario {
         this.senha = senha;
     }
     
-    // Getters e Setters
     public String getNome() {
         return nome;
     }

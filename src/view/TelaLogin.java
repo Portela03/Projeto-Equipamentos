@@ -6,9 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Tela de login do sistema
- */
+
 public class TelaLogin extends JFrame {
     private SistemaController controller;
     private JTextField txtLogin;
@@ -34,14 +32,13 @@ public class TelaLogin extends JFrame {
     private void configurarLayout() {
         setLayout(new BorderLayout());
         
-        // Painel principal
+
         JPanel painelPrincipal = new JPanel(new GridBagLayout());
         painelPrincipal.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
-        
-        // Título
+ 
         JLabel lblTitulo = new JLabel("Sistema de Controle de Empréstimos");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -112,8 +109,7 @@ public class TelaLogin extends JFrame {
                 abrirTelaCadastro();
             }
         });
-        
-        // Enter no campo senha faz login
+
         txtSenha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,7 +125,7 @@ public class TelaLogin extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         
-        // Foco inicial no campo login
+
         SwingUtilities.invokeLater(() -> txtLogin.requestFocus());
     }
     
